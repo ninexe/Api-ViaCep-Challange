@@ -8,24 +8,32 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Optional;
+
 @Service
 public class ApiFreteServiceImpl implements ApiFreteService {
     @Value("${api.frete.url}")
     private String apiUrl;
 
-    public EnderecoResponse getEnderecoByCep(final String cep) {
-        //remover dps
-        apiUrl = "https://viacep.com.br/ws";
+    public EnderecoResponse getEnderecoByCep(final String cep, Optional<String> paramOpc) {
         if (!CepUtils.isCep(cep)){
             throw new IllegalArgumentException("Cep Inválido!");
         }
+
+        if(!paramOpc.equals("")) {
+            apiUrl = paramOpc.get();
+        }
+
         RestTemplate restTemplate = new RestTemplate();
-        EnderecoApiFreteModel enderecoApiFreteModel = restTemplate.getForObject(String.format("%s/%s/json/", apiUrl, cep) , EnderecoApiFreteModel.class);
+        EnderecoApiFreteModel enderecoApiFreteModel = restTemplate.getForObject(String.format("%s/%s/json/", apiUrl, cep), EnderecoApiFreteModel.class);
+
         if (enderecoApiFreteModel.getCep() == null){
             throw new IllegalArgumentException("Cep não encontrado");
         }
+
         EnderecoResponse enderecoResponse = convertToEnderecoResponse(enderecoApiFreteModel);
         enderecoResponse.setFrete(UfUtils.getFrete(enderecoApiFreteModel.getUf()));
+
         return enderecoResponse;
     }
 
