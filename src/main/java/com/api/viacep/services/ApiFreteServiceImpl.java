@@ -14,6 +14,8 @@ public class ApiFreteServiceImpl implements ApiFreteService {
     private String apiUrl;
 
     public EnderecoResponse getEnderecoByCep(final String cep) {
+        //remover dps
+        apiUrl = "https://viacep.com.br/ws";
         if (!CepUtils.isCep(cep)){
             throw new IllegalArgumentException("Cep Inválido!");
         }
