@@ -23,6 +23,7 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.api.viacep"))
                 .paths(regex("/api.*"))
                 .build()
+                .useDefaultResponseMessages(false)
                 .apiInfo(metaInfo());
     }
     private ApiInfo metaInfo(){
