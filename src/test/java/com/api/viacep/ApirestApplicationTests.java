@@ -25,6 +25,7 @@ class ApirestApplicationTests {
 	@Test
 	void testConsultCep(){
 		enderecoResponse = apiFreteServiceImpl.getEnderecoByCep("89201-420", Optional.of("https://viacep.com.br/ws"));
+
 		assert (enderecoResponse.getLogradouro().equals("Rua Visconde de Taunay"));
 		assert (enderecoResponse.getComplemento().equals("até 333/334"));
 		assert (enderecoResponse.getBairro().equals("Centro"));
@@ -39,6 +40,7 @@ class ApirestApplicationTests {
 	@Test
 	void testConsultCep2(){
 		enderecoResponse = apiFreteServiceImpl.getEnderecoByCep("58755-000",Optional.of("https://viacep.com.br/ws"));
+
 		assert (enderecoResponse.getLogradouro().equals(""));
 		assert (enderecoResponse.getComplemento().equals(""));
 		assert (enderecoResponse.getBairro().equals(""));
@@ -53,6 +55,7 @@ class ApirestApplicationTests {
 	@Test
 	void testConsultFret(){
 		enderecoResponse = apiFreteServiceImpl.getEnderecoByCep("89201-420",Optional.of("https://viacep.com.br/ws"));
+
 		assert (enderecoResponse.getFrete().equals(17.30));
 		assert (enderecoResponse.getUf().equals("SC"));
 		// Comparando o frete se está correto de acordo a consulta da api
@@ -60,6 +63,7 @@ class ApirestApplicationTests {
 	@Test
 	void testConsultFret2(){
 		enderecoResponse = apiFreteServiceImpl.getEnderecoByCep("58755-000",Optional.of("https://viacep.com.br/ws"));
+
 		assert (enderecoResponse.getFrete().equals(15.98));
 		assert (enderecoResponse.getUf().equals("PB"));
 		// Comparando o frete se está correto de acordo a consulta da api
