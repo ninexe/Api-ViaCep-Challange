@@ -20,7 +20,7 @@ public class ApiFreteServiceImpl implements ApiFreteService {
             throw new IllegalArgumentException("Cep Inválido!");
         }
 
-        if(!paramOpc.equals("")) {
+        if(!(paramOpc.get() == "")) {
             apiUrl = paramOpc.get();
         }
 

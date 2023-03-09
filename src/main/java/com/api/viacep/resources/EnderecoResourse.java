@@ -25,8 +25,9 @@ public class EnderecoResourse {
 
     @ApiOperation(value = "Consulta CEP")
     @PostMapping("/v1/consulta-endereco")
-    public ResponseEntity<EnderecoResponse> consultarCep(@RequestBody CepRequest request) {
+    public ResponseEntity<EnderecoResponse> consultarCepPost(@RequestBody CepRequest request) {
         EnderecoResponse response = apiFreteService.getEnderecoByCep(request.getCep(), Optional.of(""));
         return ResponseEntity.ok(response);
     }
+
 }

@@ -34,7 +34,7 @@ class ApirestApplicationTests {
 		assert (enderecoResponse.getGia().equals(""));
 		assert (enderecoResponse.getDdd().equals("47"));
 		assert (enderecoResponse.getSiafi().equals("8179"));
-		//when(apiFreteService.getEnderecoByCep("89228560")).thenReturn(response);
+		// Teste unitario validando Body completo
 	}
 	@Test
 	void testConsultCep2(){
@@ -48,22 +48,21 @@ class ApirestApplicationTests {
 		assert (enderecoResponse.getGia().equals(""));
 		assert (enderecoResponse.getDdd().equals("83"));
 		assert (enderecoResponse.getSiafi().equals("2147"));
-		//when(apiFreteService.getEnderecoByCep("89228560")).thenReturn(response);
+		// Teste unitario validando Body completo
 	}
 	@Test
 	void testConsultFret(){
 		enderecoResponse = apiFreteServiceImpl.getEnderecoByCep("89201-420",Optional.of("https://viacep.com.br/ws"));
 		assert (enderecoResponse.getFrete().equals(17.30));
 		assert (enderecoResponse.getUf().equals("SC"));
-
-		//when(apiFreteService.getEnderecoByCep("89228560")).thenReturn(response);
+		// Comparando o frete se está correto de acordo a consulta da api
 	}
 	@Test
 	void testConsultFret2(){
 		enderecoResponse = apiFreteServiceImpl.getEnderecoByCep("58755-000",Optional.of("https://viacep.com.br/ws"));
 		assert (enderecoResponse.getFrete().equals(15.98));
 		assert (enderecoResponse.getUf().equals("PB"));
-		//when(apiFreteService.getEnderecoByCep("89228560")).thenReturn(response);
+		// Comparando o frete se está correto de acordo a consulta da api
 	}
 
 }
