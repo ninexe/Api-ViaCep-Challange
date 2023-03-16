@@ -27,7 +27,8 @@ public class EnderecoResourse {
 
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Cep consultado com sucesso!"),
-            @ApiResponse(code = 400, message = "Cep Inválido!"),
+            @ApiResponse(code = 400, message = "Cep vazio ou inválido!"),
+            @ApiResponse(code = 404, message = "Cep não encontrado!"),
     })
     @ApiOperation(value = "Consulta CEP")
     @PostMapping("/v1/consulta-endereco")
