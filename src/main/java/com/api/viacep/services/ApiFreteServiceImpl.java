@@ -41,15 +41,11 @@ public class ApiFreteServiceImpl implements ApiFreteService {
         EnderecoResponse to = new EnderecoResponse();
 
         to.setCep(from.getCep());
-        to.setLogradouro(from.getLogradouro());
+        to.setRua(from.getLogradouro());
         to.setComplemento(from.getComplemento());
         to.setBairro(from.getBairro());
-        to.setLocalidade(from.getLocalidade());
-        to.setUf(from.getUf());
-        to.setIbge(from.getIbge());
-        to.setGia(from.getGia());
-        to.setDdd(from.getDdd());
-        to.setSiafi(from.getSiafi());
+        to.setCidade(from.getLocalidade());
+        to.setEstado(from.getUf());
 
         return to;
     }
